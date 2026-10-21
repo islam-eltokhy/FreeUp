@@ -34,7 +34,6 @@ export function Footer() {
       <div className="container-x grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <Logo size="lg" />
-          <p className="font-script mt-3 text-2xl text-brand">{STORE.tagline}</p>
           <p className="mt-4 max-w-xs text-sm text-muted">
             A women’s fashion outlet in Hadayek October. Current-season jackets, dresses, denim and jewellery at outlet
             prices, in store and delivered anywhere in Egypt.

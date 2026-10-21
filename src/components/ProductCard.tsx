@@ -9,11 +9,11 @@ import { ProductTile } from "./ProductTile";
 import { Badge } from "./ui/Badge";
 import { Rating } from "./ui/Rating";
 
-const tagTone: Record<NonNullable<Product["tag"]>, "ink" | "brand" | "blush" | "camel"> = {
+const tagTone: Record<NonNullable<Product["tag"]>, "ink" | "brand" | "blush" | "camel" | "leaf"> = {
   "New in": "brand",
   "Best seller": "blush",
   "Last pieces": "ink",
-  "Made in Egypt": "camel",
+  "Made in Egypt": "leaf",
   "As seen on Instagram": "brand",
 };
 

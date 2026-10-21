@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "ink" | "brand" | "blush" | "camel" | "white";
+type Tone = "ink" | "brand" | "blush" | "camel" | "leaf" | "white";
 
 const tones: Record<Tone, string> = {
   ink: "bg-ink text-cream",
   brand: "bg-brand text-white",
   blush: "bg-blush-2 text-brand-2",
   camel: "bg-camel text-cream",
+  leaf: "bg-leaf text-cream",
   white: "bg-white/90 text-ink backdrop-blur",
 };
 

@@ -19,7 +19,7 @@ export function Hero() {
         className="pointer-events-none absolute -top-48 left-1/2 h-[560px] w-[1000px] -translate-x-1/2 rounded-full opacity-70 blur-3xl"
         style={{
           background:
-            "radial-gradient(closest-side at 35% 50%, rgba(245,206,220,0.9), transparent 70%), radial-gradient(closest-side at 72% 55%, rgba(233,217,198,0.9), transparent 70%)",
+            "radial-gradient(closest-side at 35% 50%, rgba(230,0,122,0.22), transparent 70%), radial-gradient(closest-side at 72% 55%, rgba(168,121,72,0.28), transparent 70%)",
         }}
       />
       <div className="container-x relative grid items-center gap-14 pb-20 pt-12 lg:grid-cols-[1.05fr_1fr] lg:pb-28 lg:pt-16">

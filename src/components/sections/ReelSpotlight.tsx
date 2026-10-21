@@ -28,7 +28,7 @@ export function ReelSpotlight() {
           >
             <ProductTile product={hero} className="h-full w-full" iconClassName="h-[36%] w-[36%]" />
             <div className="absolute inset-x-0 top-0 flex items-center gap-2 bg-gradient-to-b from-black/50 to-transparent p-4 text-xs font-semibold text-white">
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-[10px] font-bold">V!</span>
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white text-[11px] font-extrabold text-brand">V!</span>
               vibes outlet
               <Instagram className="ml-auto h-4 w-4" />
             </div>

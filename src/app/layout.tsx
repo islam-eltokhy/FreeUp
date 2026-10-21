@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Fraunces, Great_Vibes } from "next/font/google";
+import { Fraunces, Great_Vibes, Montserrat } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/context/StoreContext";
 import { Navbar } from "@/components/Navbar";
@@ -15,6 +15,12 @@ const display = Fraunces({
   weight: "variable",
   style: ["normal", "italic"],
   axes: ["opsz", "SOFT"],
+});
+
+const logo = Montserrat({
+  variable: "--font-logo",
+  subsets: ["latin"],
+  weight: ["800"],
 });
 
 const script = Great_Vibes({
@@ -39,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable} ${script.variable} h-full antialiased`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable} ${script.variable} ${logo.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <StoreProvider>
           <Navbar />
