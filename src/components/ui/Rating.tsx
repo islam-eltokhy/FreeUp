@@ -19,7 +19,7 @@ export function Rating({
             <span key={i} className="relative inline-block h-3.5 w-3.5">
               <Star className="absolute inset-0 h-3.5 w-3.5 text-ink/15" fill="currentColor" strokeWidth={0} />
               <span className="absolute inset-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
-                <Star className="h-3.5 w-3.5 text-sun" fill="currentColor" strokeWidth={0} />
+                <Star className="h-3.5 w-3.5 text-gold" fill="currentColor" strokeWidth={0} />
               </span>
             </span>
           );

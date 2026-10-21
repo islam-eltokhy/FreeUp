@@ -12,7 +12,7 @@ import {
 } from "react";
 import type { CartItem } from "@/lib/types";
 import { getProductById } from "@/data/products";
-import { PROMO_CODE, PROMO_RATE, FREE_SHIPPING_THRESHOLD } from "@/lib/utils";
+import { PROMO_CODE, PROMO_RATE, FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from "@/lib/utils";
 
 /* ------------------------------------------------------------------------ */
 /* Persisted store (cart + wishlist) backed by localStorage.                 */
@@ -206,7 +206,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       return sum + (product ? product.price * item.quantity : 0);
     }, 0);
     const discount = promo ? Math.round(subtotal * PROMO_RATE * 100) / 100 : 0;
-    const shipping = subtotal === 0 || subtotal - discount >= FREE_SHIPPING_THRESHOLD ? 0 : 6.95;
+    const shipping = subtotal === 0 || subtotal - discount >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
     const total = Math.max(0, subtotal - discount + shipping);
     return {
       hydrated,

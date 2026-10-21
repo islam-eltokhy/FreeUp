@@ -5,8 +5,8 @@ import { productIcons } from "@/lib/icons";
 
 /**
  * Product artwork. Renders the product photo when one is provided, otherwise a
- * generated gradient tile with the product's icon so the catalog works with
- * zero external assets.
+ * generated boutique tile: soft gradient, an arch, and the garment silhouette,
+ * so the catalog works with zero external assets.
  */
 export function ProductTile({
   product,
@@ -40,26 +40,16 @@ export function ProductTile({
   return (
     <div
       className={cn("noise relative isolate overflow-hidden", className)}
-      style={{ background: `linear-gradient(135deg, ${art.from} 0%, ${art.to} 100%)` }}
+      style={{ background: `linear-gradient(160deg, ${art.from} 0%, ${art.to} 100%)` }}
       aria-hidden
     >
-      <div
-        className="absolute -left-1/4 -top-1/4 h-3/4 w-3/4 rounded-full opacity-50 blur-2xl"
-        style={{ background: "rgba(255,255,255,0.7)" }}
-      />
-      <div
-        className="absolute -bottom-1/3 -right-1/4 h-3/4 w-3/4 rounded-full opacity-40 blur-2xl"
-        style={{ background: art.ink }}
-      />
-      <div
-        className="absolute inset-[12%] rounded-[28%] border opacity-30"
-        style={{ borderColor: art.ink }}
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute -left-1/4 -top-1/4 h-3/4 w-3/4 rounded-full bg-white/60 blur-2xl" />
+      <div className="absolute inset-x-[18%] bottom-0 top-[14%] rounded-arch border border-white/70 bg-white/30" />
+      <div className="absolute inset-0 flex items-center justify-center pt-[6%]">
         <Icon
-          className={cn("h-[42%] w-[42%] drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]", iconClassName)}
+          className={cn("h-[46%] w-[46%] drop-shadow-[0_10px_20px_rgba(42,26,33,0.14)]", iconClassName)}
           style={{ color: art.ink }}
-          strokeWidth={1.25}
+          strokeWidth={1.1}
         />
       </div>
     </div>

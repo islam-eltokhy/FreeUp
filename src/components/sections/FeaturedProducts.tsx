@@ -3,16 +3,14 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function FeaturedProducts() {
-  const featured = [...products]
-    .sort((a, b) => b.reviews * b.rating - a.reviews * a.rating)
-    .slice(0, 8);
+  const featured = [...products].sort((a, b) => b.reviews * b.rating - a.reviews * a.rating).slice(0, 8);
   return (
-    <section id="deals" className="container-x py-20">
+    <section id="new-in" className="container-x py-20">
       <SectionHeading
-        eyebrow="Trending this week"
-        title="The drops everyone's grabbing."
-        description="Sorted by what's flying out the door. Hover for a one-click add."
-        action={{ label: "See all deals", href: "/shop" }}
+        eyebrow="Trending in store"
+        title="The pieces everyone is asking about."
+        description="Sorted by what’s leaving the rails fastest. Hover for a one-tap add."
+        action={{ label: "See all styles", href: "/shop" }}
       />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {featured.map((p, i) => (

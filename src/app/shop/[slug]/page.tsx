@@ -26,10 +26,13 @@ export default async function ProductPage({ params }: PageProps<"/shop/[slug]">)
   const product = getProduct(slug);
   if (!product) notFound();
 
-  const related = products
-    .filter((p) => p.id !== product.id)
-    .sort((a, b) => Number(b.category === product.category) - Number(a.category === product.category))
-    .slice(0, 4);
+  const styled = (product.styleWith ?? []).map((id) => products.find((p) => p.id === id)).filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const related = [
+    ...styled,
+    ...products
+      .filter((p) => p.id !== product.id && !styled.includes(p))
+      .sort((a, b) => Number(b.category === product.category) - Number(a.category === product.category)),
+  ].slice(0, 4);
 
   return (
     <div className="container-x py-8 lg:py-12">
@@ -49,7 +52,7 @@ export default async function ProductPage({ params }: PageProps<"/shop/[slug]">)
 
       <section className="mt-24">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="font-display text-3xl font-bold">You might also vibe with</h2>
+          <h2 className="font-display text-3xl font-semibold">Complete the look</h2>
           <Link href="/shop" className="text-sm font-semibold underline-offset-4 hover:underline">
             Shop all
           </Link>

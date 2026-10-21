@@ -9,11 +9,12 @@ import { ProductTile } from "./ProductTile";
 import { Badge } from "./ui/Badge";
 import { Rating } from "./ui/Rating";
 
-const tagTone: Record<NonNullable<Product["tag"]>, "ink" | "lime" | "coral" | "violet"> = {
-  New: "violet",
-  "Best seller": "lime",
-  "Last chance": "coral",
-  Limited: "ink",
+const tagTone: Record<NonNullable<Product["tag"]>, "ink" | "brand" | "blush" | "camel"> = {
+  "New in": "brand",
+  "Best seller": "blush",
+  "Last pieces": "ink",
+  "Made in Egypt": "camel",
+  "As seen on Instagram": "brand",
 };
 
 export function ProductCard({ product, className }: { product: Product; className?: string }) {
@@ -28,7 +29,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
       color: product.colors[0],
       size: product.sizes?.[Math.floor((product.sizes.length - 1) / 2)],
     });
-    pushToast({ title: "Added to bag", description: product.name });
+    pushToast({ title: "Added to your bag", description: product.name });
     openDrawer();
   }
 
@@ -57,7 +58,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           aria-label={wished ? "Remove from wishlist" : "Save to wishlist"}
           className={cn(
             "absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-ink backdrop-blur transition hover:scale-105",
-            wished && "text-coral",
+            wished && "text-brand",
           )}
         >
           <Heart className="h-4 w-4" fill={wished ? "currentColor" : "none"} />
@@ -66,7 +67,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           type="button"
           onClick={quickAdd}
           aria-label={`Add ${product.name} to bag`}
-          className="absolute bottom-3 right-3 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-ink text-cream opacity-0 shadow-lift transition-all duration-300 hover:bg-violet group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100"
+          className="absolute bottom-3 right-3 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-brand text-white opacity-0 shadow-brand transition-all duration-300 hover:bg-brand-2 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100"
         >
           <Plus className="h-5 w-5" />
         </button>
@@ -74,22 +75,22 @@ export function ProductCard({ product, className }: { product: Product; classNam
 
       <div className="flex flex-1 flex-col px-2 pb-2 pt-4">
         <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted">{product.brand}</p>
-        <h3 className="mt-1 font-semibold leading-snug">
+        <h3 className="mt-1 font-display text-[17px] font-semibold leading-snug">
           <Link href={`/shop/${product.slug}`} className="after:absolute after:inset-0 after:content-[''] after:pointer-events-none">
             {product.name}
           </Link>
         </h3>
-        <div className="mt-2 flex items-center gap-1.5">
-          {product.colors.slice(0, 4).map((c) => (
-            <span key={c} className="h-3 w-3 rounded-full ring-1 ring-ink/10" style={{ background: c }} />
-          ))}
-        </div>
-        <div className="mt-auto flex items-end justify-between pt-4">
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold">{formatPrice(product.price)}</span>
-            <span className="text-sm text-muted line-through">{formatPrice(product.compareAtPrice)}</span>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5">
+            {product.colors.slice(0, 4).map((c) => (
+              <span key={c} className="h-3 w-3 rounded-full ring-1 ring-ink/10" style={{ background: c }} />
+            ))}
           </div>
           <Rating value={product.rating} className="text-xs" />
+        </div>
+        <div className="mt-auto flex flex-wrap items-baseline gap-x-2 pt-4">
+          <span className="text-lg font-bold">{formatPrice(product.price)}</span>
+          <span className="text-sm text-muted line-through">{formatPrice(product.compareAtPrice)}</span>
         </div>
       </div>
     </article>

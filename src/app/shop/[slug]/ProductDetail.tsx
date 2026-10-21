@@ -22,7 +22,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
   function add() {
     addItem({ productId: product.id, quantity: qty, color, size });
-    pushToast({ title: `Added ${qty > 1 ? `${qty} × ` : ""}to bag`, description: product.name });
+    pushToast({ title: `Added ${qty > 1 ? `${qty} × ` : ""}to your bag`, description: product.name });
     openDrawer();
   }
 
@@ -37,7 +37,7 @@ export function ProductDetail({ product }: { product: Product }) {
           />
           <div className="absolute left-5 top-5 flex gap-2">
             {off > 0 && <Badge tone="white" className="text-xs">-{off}%</Badge>}
-            {product.tag && <Badge tone="lime" className="text-xs">{product.tag}</Badge>}
+            {product.tag && <Badge tone="brand" className="text-xs">{product.tag}</Badge>}
           </div>
         </div>
         <div className="mt-3 grid grid-cols-4 gap-3">
@@ -48,7 +48,7 @@ export function ProductDetail({ product }: { product: Product }) {
               onClick={() => setColor(c)}
               className={cn(
                 "overflow-hidden rounded-2xl ring-2 ring-offset-2 ring-offset-cream transition",
-                color === c ? "ring-ink" : "ring-transparent hover:ring-ink/20",
+                color === c ? "ring-brand" : "ring-transparent hover:ring-ink/20",
               )}
               aria-label={`Colour option ${i + 1}`}
             >
@@ -62,19 +62,20 @@ export function ProductDetail({ product }: { product: Product }) {
       </div>
 
       <div>
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet">{product.brand}</p>
-        <h1 className="font-display mt-2 text-balance text-4xl font-extrabold leading-[1] sm:text-5xl">{product.name}</h1>
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">{product.brand}</p>
+        <h1 className="font-display mt-2 text-balance text-4xl font-semibold leading-[1] sm:text-5xl">{product.name}</h1>
         <Rating value={product.rating} count={product.reviews} className="mt-4" />
 
         <div className="mt-6 flex flex-wrap items-end gap-x-3 gap-y-1">
-          <span className="font-display text-4xl font-extrabold">{formatPrice(product.price)}</span>
+          <span className="font-display text-4xl font-semibold">{formatPrice(product.price)}</span>
           <span className="pb-1 text-lg text-muted line-through">{formatPrice(product.compareAtPrice)}</span>
-          <span className="mb-1 rounded-full bg-lime px-2.5 py-1 text-xs font-extrabold">
+          <span className="mb-1 rounded-full bg-blush-2 px-2.5 py-1 text-xs font-extrabold text-brand-2">
             You save {formatPrice(product.compareAtPrice - product.price)}
           </span>
         </div>
 
         <p className="mt-6 text-ink-2">{product.description}</p>
+        {product.material && <p className="mt-2 text-sm text-muted">Fabric: {product.material}</p>}
 
         <div className="mt-8">
           <div className="flex items-center justify-between text-sm">
@@ -91,7 +92,7 @@ export function ProductDetail({ product }: { product: Product }) {
                 aria-pressed={color === c}
                 className={cn(
                   "grid h-10 w-10 place-items-center rounded-full ring-2 ring-offset-2 ring-offset-cream transition",
-                  color === c ? "ring-ink" : "ring-transparent hover:ring-ink/20",
+                  color === c ? "ring-brand" : "ring-transparent hover:ring-ink/20",
                 )}
                 style={{ background: c }}
               >
@@ -116,7 +117,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   aria-pressed={size === s}
                   className={cn(
                     "h-11 min-w-[3rem] rounded-xl border px-3 text-sm font-semibold transition",
-                    size === s ? "border-ink bg-ink text-cream" : "border-line bg-white hover:border-ink/40",
+                    size === s ? "border-brand bg-brand text-white" : "border-line bg-white hover:border-brand/50",
                   )}
                 >
                   {s}
@@ -154,7 +155,7 @@ export function ProductDetail({ product }: { product: Product }) {
             variant="secondary"
             onClick={() => toggleWishlist(product.id)}
             aria-pressed={wished}
-            className={cn("sm:w-13 sm:px-0", wished && "text-coral")}
+            className={cn("sm:w-13 sm:px-0", wished && "text-brand")}
             aria-label="Save to wishlist"
           >
             <Heart className="h-5 w-5" fill={wished ? "currentColor" : "none"} />
@@ -162,9 +163,9 @@ export function ProductDetail({ product }: { product: Product }) {
         </div>
 
         <ul className="mt-8 grid gap-3 rounded-2xl border border-line bg-white p-5 text-sm sm:grid-cols-3">
-          <li className="flex items-center gap-2"><Truck className="h-4 w-4 text-violet" /> Ships in 48h</li>
-          <li className="flex items-center gap-2"><RotateCcw className="h-4 w-4 text-violet" /> 30-day returns</li>
-          <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-violet" /> Authentic</li>
+          <li className="flex items-center gap-2"><Truck className="h-4 w-4 text-brand" /> Delivery across Egypt</li>
+          <li className="flex items-center gap-2"><RotateCcw className="h-4 w-4 text-brand" /> 14-day exchange</li>
+          <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-brand" /> Cash on delivery</li>
         </ul>
 
         <details className="group mt-6 rounded-2xl border border-line bg-white" open>
@@ -175,19 +176,19 @@ export function ProductDetail({ product }: { product: Product }) {
           <ul className="space-y-2 border-t border-line px-5 py-4 text-sm text-ink-2">
             {product.details.map((d) => (
               <li key={d} className="flex items-start gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-lime-2" strokeWidth={3} /> {d}
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" strokeWidth={3} /> {d}
               </li>
             ))}
           </ul>
         </details>
         <details className="group mt-3 rounded-2xl border border-line bg-white">
           <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold">
-            Why is it this cheap?
+            Delivery &amp; exchanges
             <Plus className="h-4 w-4 transition-transform group-open:rotate-45" />
           </summary>
           <p className="border-t border-line px-5 py-4 text-sm text-ink-2">
-            Outlet stock is last season’s range, overstock, or open-box returns that have been inspected and
-            re-sealed. It’s the exact same product, with the same warranty, minus the full-price markup.
+            Cairo and Giza arrive in 1 to 3 days, other governorates in 2 to 5. Delivery is 60 EGP, free over 1,500 EGP.
+            Pay cash on delivery or by card. Exchange sizes within 14 days in store or by courier, tags on.
           </p>
         </details>
       </div>

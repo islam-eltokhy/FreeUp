@@ -18,10 +18,10 @@ export function WishlistView() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-cream-2">
           <Heart className="h-7 w-7 text-muted" />
         </span>
-        <p className="font-display mt-5 text-2xl font-bold">Nothing saved yet</p>
+        <p className="font-display mt-5 text-2xl font-semibold">Nothing saved yet</p>
         <p className="mt-2 text-muted">Tap the heart on any product to keep it here.</p>
-        <Button href="/shop" variant="lime" size="lg" className="mt-6">
-          Browse deals <ArrowRight className="h-4 w-4" />
+        <Button href="/shop" size="lg" className="mt-6">
+          Browse styles <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
     );

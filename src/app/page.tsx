@@ -2,10 +2,11 @@ import { Hero } from "@/components/sections/Hero";
 import { BrandMarquee } from "@/components/sections/BrandMarquee";
 import { Categories } from "@/components/sections/Categories";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
-import { DealOfTheDay } from "@/components/sections/DealOfTheDay";
+import { ReelSpotlight } from "@/components/sections/ReelSpotlight";
 import { ValueProps } from "@/components/sections/ValueProps";
+import { VisitStore } from "@/components/sections/VisitStore";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Newsletter } from "@/components/sections/Newsletter";
+import { FollowCta } from "@/components/sections/FollowCta";
 
 export default function HomePage() {
   return (
@@ -14,10 +15,11 @@ export default function HomePage() {
       <BrandMarquee />
       <Categories />
       <FeaturedProducts />
-      <DealOfTheDay />
+      <ReelSpotlight />
       <ValueProps />
+      <VisitStore />
       <Testimonials />
-      <Newsletter />
+      <FollowCta />
     </>
   );
 }

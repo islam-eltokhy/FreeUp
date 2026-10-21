@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Fraunces, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/context/StoreContext";
 import { Navbar } from "@/components/Navbar";
@@ -9,32 +9,37 @@ import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Toaster } from "@/components/Toaster";
 
-const display = Bricolage_Grotesque({
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
+});
+
+const script = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Vibes Outlet — Big-brand vibes, outlet prices",
+    default: "Vibes Outlet — Where fashion sets the mood",
     template: "%s · Vibes Outlet",
   },
   description:
-    "Last season's most-wanted drops from the brands you love, authenticated and shipped in 48 hours. Up to 70% off apparel, footwear, tech and home.",
+    "Women’s fashion outlet in Hadayek October: this season’s jackets, dresses, denim and jewellery at outlet prices. Delivery across Egypt, cash on delivery available.",
   openGraph: {
     title: "Vibes Outlet",
-    description: "Big-brand vibes. Outlet prices. Up to 70% off, authenticity guaranteed.",
+    description: "Boutique pieces, outlet prices. Delivery across Egypt or visit us at Zoweil Plaza Mall.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable} ${script.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <StoreProvider>
           <Navbar />

@@ -8,6 +8,7 @@ import { categories } from "@/data/categories";
 import type { Category } from "@/lib/types";
 import { cn, discountPercent } from "@/lib/utils";
 import { ProductCard } from "@/components/ProductCard";
+import { productIcons } from "@/lib/icons";
 
 type Sort = "featured" | "discount" | "price-asc" | "price-desc" | "new" | "rating";
 
@@ -60,7 +61,7 @@ export function ShopClient() {
       case "rating":
         return [...list].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
       case "new":
-        return [...list].sort((a, b) => Number(b.tag === "New") - Number(a.tag === "New"));
+        return [...list].sort((a, b) => Number(b.tag === "New in") - Number(a.tag === "New in"));
       default:
         return [...list].sort((a, b) => b.reviews * b.rating - a.reviews * a.rating);
     }
@@ -68,17 +69,20 @@ export function ShopClient() {
 
   return (
     <div>
-      <div className="sticky top-[100px] z-30 -mx-4 mb-8 border-y border-line bg-cream/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      <div className="sticky top-[108px] z-30 -mx-4 mb-8 border-y border-line bg-cream/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <Chip active={cat === "all"} onClick={() => setParam("cat", null)}>
               All
             </Chip>
-            {categories.map((c) => (
-              <Chip key={c.id} active={cat === c.id} onClick={() => setParam("cat", c.id)}>
-                <c.icon className="h-3.5 w-3.5" /> {c.label}
-              </Chip>
-            ))}
+            {categories.map((c) => {
+              const Icon = productIcons[c.icon];
+              return (
+                <Chip key={c.id} active={cat === c.id} onClick={() => setParam("cat", c.id)}>
+                  <Icon className="h-3.5 w-3.5" /> {c.short}
+                </Chip>
+              );
+            })}
           </div>
           <div className="flex items-center gap-2">
             <label className="relative flex-1 lg:w-64">
@@ -87,8 +91,8 @@ export function ShopClient() {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search brands, products"
-                className="h-10 w-full rounded-full border border-line bg-white pl-10 pr-9 text-sm focus:border-ink focus:outline-none"
+                placeholder="Search styles, labels"
+                className="h-10 w-full rounded-full border border-line bg-white pl-10 pr-9 text-sm focus:border-brand focus:outline-none"
               />
               {query && (
                 <button
@@ -121,7 +125,7 @@ export function ShopClient() {
       </div>
 
       <p className="mb-5 text-sm text-muted">
-        <span className="font-semibold text-ink">{results.length}</span> {results.length === 1 ? "deal" : "deals"}
+        <span className="font-semibold text-ink">{results.length}</span> {results.length === 1 ? "style" : "styles"}
         {cat !== "all" && (
           <>
             {" "}
@@ -132,7 +136,7 @@ export function ShopClient() {
 
       {results.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-line bg-white px-6 py-20 text-center">
-          <p className="font-display text-2xl font-bold">Nothing matches that, yet.</p>
+          <p className="font-display text-2xl font-semibold">Nothing matches that, yet.</p>
           <p className="mt-2 text-muted">Try a different search or clear the filters.</p>
           <button
             type="button"
@@ -140,7 +144,7 @@ export function ShopClient() {
               setQuery("");
               router.replace(pathname);
             }}
-            className="mt-6 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-cream"
+            className="mt-6 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white"
           >
             Clear everything
           </button>
@@ -172,7 +176,7 @@ function Chip({
       aria-pressed={active}
       className={cn(
         "inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full border px-4 text-sm font-medium transition",
-        active ? "border-ink bg-ink text-cream" : "border-line bg-white text-ink-2 hover:border-ink/40",
+        active ? "border-brand bg-brand text-white" : "border-line bg-white text-ink-2 hover:border-brand/50",
       )}
     >
       {children}

@@ -34,9 +34,9 @@ export function CartView() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-cream-2">
           <ShoppingBag className="h-7 w-7 text-muted" />
         </span>
-        <p className="font-display mt-5 text-2xl font-bold">Your bag is empty</p>
-        <p className="mt-2 text-muted">Deals this good don’t wait around.</p>
-        <Button href="/shop" variant="lime" size="lg" className="mt-6">
+        <p className="font-display mt-5 text-2xl font-semibold">Your bag is empty</p>
+        <p className="mt-2 text-muted">New pieces land every week.</p>
+        <Button href="/shop" size="lg" className="mt-6">
           Start shopping <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
@@ -100,7 +100,7 @@ export function CartView() {
                   <button
                     type="button"
                     onClick={() => store.removeItem(key)}
-                    className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-coral"
+                    className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand"
                   >
                     <Trash2 className="h-4 w-4" /> Remove
                   </button>
@@ -112,13 +112,13 @@ export function CartView() {
       </ul>
 
       <aside className="h-fit rounded-3xl border border-line bg-white p-6 lg:sticky lg:top-28">
-        <h2 className="font-display text-xl font-bold">Summary</h2>
+        <h2 className="font-display text-xl font-semibold">Summary</h2>
         <form onSubmit={applyPromo} className="mt-5">
           <label htmlFor="promo" className="text-xs font-semibold uppercase tracking-wider text-muted">
             Promo code
           </label>
           {store.promo ? (
-            <div className="mt-2 flex items-center justify-between rounded-xl bg-lime/40 px-3 py-2.5 text-sm">
+            <div className="mt-2 flex items-center justify-between rounded-xl bg-blush px-3 py-2.5 text-sm">
               <span className="inline-flex items-center gap-2 font-semibold">
                 <Tag className="h-4 w-4" /> {store.promo} applied
               </span>
@@ -133,14 +133,14 @@ export function CartView() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="VIBES10"
-                className="h-11 flex-1 rounded-xl border border-line px-3 font-mono text-sm uppercase focus:border-ink focus:outline-none"
+                className="h-11 flex-1 rounded-xl border border-line px-3 font-mono text-sm uppercase focus:border-brand focus:outline-none"
               />
-              <button type="submit" className="h-11 rounded-xl bg-ink px-4 text-sm font-semibold text-cream">
+              <button type="submit" className="h-11 rounded-xl bg-brand px-4 text-sm font-semibold text-white">
                 Apply
               </button>
             </div>
           )}
-          {promoError && <p className="mt-2 text-xs text-coral">{promoError}</p>}
+          {promoError && <p className="mt-2 text-xs text-brand">{promoError}</p>}
         </form>
 
         <dl className="mt-6 space-y-3 text-sm">
@@ -149,24 +149,24 @@ export function CartView() {
             <dd className="font-semibold">{formatPrice(store.subtotal)}</dd>
           </div>
           {store.discount > 0 && (
-            <div className="flex justify-between text-violet">
+            <div className="flex justify-between text-brand">
               <dt>Promo ({store.promo})</dt>
               <dd className="font-semibold">-{formatPrice(store.discount)}</dd>
             </div>
           )}
           <div className="flex justify-between">
-            <dt className="text-muted">Shipping</dt>
+            <dt className="text-muted">Delivery</dt>
             <dd className="font-semibold">{store.shipping === 0 ? "Free" : formatPrice(store.shipping)}</dd>
           </div>
           <div className="flex justify-between border-t border-line pt-3 text-base">
             <dt className="font-bold">Total</dt>
-            <dd className="font-display text-2xl font-extrabold">{formatPrice(store.total)}</dd>
+            <dd className="font-display text-2xl font-semibold">{formatPrice(store.total)}</dd>
           </div>
         </dl>
         <Button href="/checkout" size="lg" className="mt-6 w-full">
           Checkout <ArrowRight className="h-4 w-4" />
         </Button>
-        <p className="mt-3 text-center text-xs text-muted">Secure checkout · 30-day returns</p>
+        <p className="mt-3 text-center text-xs text-muted">Cash on delivery available · 14-day exchanges</p>
       </aside>
     </div>
   );

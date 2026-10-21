@@ -65,14 +65,14 @@ export function CartDrawer() {
           <p className="text-xs font-medium text-ink-2">
             {remaining > 0 ? (
               <>
-                Add <span className="font-bold">{formatPrice(remaining)}</span> more for free shipping
+                Add <span className="font-bold">{formatPrice(remaining)}</span> more for free delivery
               </>
             ) : (
-              <span className="font-bold text-violet">You’ve unlocked free shipping</span>
+              <span className="font-bold text-brand">You’ve unlocked free delivery</span>
             )}
           </p>
           <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/10">
-            <div className="h-full rounded-full bg-lime transition-all duration-500" style={{ width: `${progress}%` }} />
+            <div className="h-full rounded-full bg-brand transition-all duration-500" style={{ width: `${progress}%` }} />
           </div>
         </div>
 
@@ -83,8 +83,8 @@ export function CartDrawer() {
                 <ShoppingBag className="h-7 w-7 text-muted" />
               </span>
               <p className="mt-4 font-semibold">Your bag is empty</p>
-              <p className="mt-1 text-sm text-muted">Deals this good don’t wait around.</p>
-              <Button href="/shop" variant="lime" className="mt-6" onClick={closeDrawer}>
+              <p className="mt-1 text-sm text-muted">New pieces land every week.</p>
+              <Button href="/shop" className="mt-6" onClick={closeDrawer}>
                 Start shopping
               </Button>
             </div>
@@ -116,7 +116,7 @@ export function CartDrawer() {
                         <button
                           type="button"
                           onClick={() => removeItem(key)}
-                          className="grid h-8 w-8 place-items-center rounded-full text-muted hover:bg-ink/5 hover:text-coral"
+                          className="grid h-8 w-8 place-items-center rounded-full text-muted hover:bg-ink/5 hover:text-brand"
                           aria-label={`Remove ${product.name}`}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -158,7 +158,7 @@ export function CartDrawer() {
               <span className="text-muted">Subtotal</span>
               <span className="text-lg font-bold">{formatPrice(subtotal)}</span>
             </div>
-            <p className="mt-1 text-xs text-muted">Shipping and promo codes are applied at checkout.</p>
+            <p className="mt-1 text-xs text-muted">Delivery and promo codes are applied at checkout. Cash on delivery available.</p>
             <div className="mt-4 grid gap-2">
               <Button href="/checkout" size="lg" className="w-full">
                 Checkout <ArrowRight className="h-4 w-4" />

@@ -1,19 +1,14 @@
 import type { ProductIcon } from "@/lib/icons";
 
-export type Category =
-  | "apparel"
-  | "footwear"
-  | "accessories"
-  | "tech"
-  | "home";
+export type Category = "jackets" | "dresses" | "tops" | "denim" | "accessories" | "shoes-bags";
 
-export type ProductTag = "New" | "Best seller" | "Last chance" | "Limited";
+export type ProductTag = "New in" | "Best seller" | "Last pieces" | "Made in Egypt" | "As seen on Instagram";
 
 export interface ProductArt {
-  /** Two gradient stops used for the generated product tile. */
+  /** Two soft gradient stops for the generated product tile. */
   from: string;
   to: string;
-  /** Foreground color used for the icon/line-work on the tile. */
+  /** Stroke colour for the garment silhouette. */
   ink: string;
   icon: ProductIcon;
 }
@@ -31,8 +26,11 @@ export interface Product {
   colors: string[];
   sizes?: string[];
   tag?: ProductTag;
+  material?: string;
   description: string;
   details: string[];
+  /** Product ids that complete the look. */
+  styleWith?: string[];
   art: ProductArt;
   /**
    * Optional real photo. When set, the storefront renders it instead of the

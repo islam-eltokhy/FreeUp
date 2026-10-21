@@ -14,7 +14,7 @@ export function Toaster() {
           role="status"
           className="pointer-events-auto flex items-center gap-3 rounded-2xl bg-ink px-4 py-3 text-cream shadow-lift animate-toast-in"
         >
-          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-lime text-ink">
+          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-white">
             <Check className="h-4 w-4" strokeWidth={3} />
           </span>
           <div className="flex-1 text-sm">

@@ -1,25 +1,25 @@
-import { BadgeCheck, RotateCcw, ShieldCheck, Truck } from "lucide-react";
+import { Banknote, RefreshCcw, Store, Truck } from "lucide-react";
 
 const props = [
   {
-    icon: BadgeCheck,
-    title: "100% authentic",
-    body: "Every item is sourced directly from the brand or an authorised partner and checked by hand.",
-  },
-  {
     icon: Truck,
-    title: "Out the door in 48h",
-    body: "Orders ship within two working days. Free over $60, tracked all the way to your door.",
+    title: "Delivery across Egypt",
+    body: "Cairo and Giza in 1 to 3 days, every other governorate in 2 to 5. Free over 1,500 EGP.",
   },
   {
-    icon: RotateCcw,
-    title: "30-day easy returns",
-    body: "Changed your mind? Print a label, drop it off, get refunded. No quizzes, no fuss.",
+    icon: Banknote,
+    title: "Cash on delivery",
+    body: "Pay the courier at your door, or pay by card or Instapay at checkout. Your call.",
   },
   {
-    icon: ShieldCheck,
-    title: "Full warranty",
-    body: "Open-box tech keeps its full manufacturer warranty. Outlet price, full-price peace of mind.",
+    icon: RefreshCcw,
+    title: "14-day exchanges",
+    body: "Wrong size? Exchange it in store or arrange a courier swap within 14 days, tags on.",
+  },
+  {
+    icon: Store,
+    title: "Try it on in store",
+    body: "Reserve online, try on at Zoweil Plaza Mall. Our stylists will build the whole look with you.",
   },
 ];
 
@@ -28,14 +28,11 @@ export function ValueProps() {
     <section className="container-x py-20">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {props.map((p) => (
-          <div
-            key={p.title}
-            className="group rounded-3xl border border-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift"
-          >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cream-2 text-ink transition group-hover:bg-lime">
+          <div key={p.title} className="group rounded-3xl border border-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+            <span className="grid h-12 w-12 place-items-center rounded-full bg-blush text-brand transition group-hover:bg-brand group-hover:text-white">
               <p.icon className="h-6 w-6" strokeWidth={1.75} />
             </span>
-            <h3 className="font-display mt-5 text-xl font-bold">{p.title}</h3>
+            <h3 className="font-display mt-5 text-xl font-semibold">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
           </div>
         ))}

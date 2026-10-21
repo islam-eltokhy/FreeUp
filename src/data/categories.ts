@@ -1,62 +1,71 @@
-import {
-  Shirt,
-  Footprints,
-  Watch,
-  Headphones,
-  Lamp,
-  type LucideIcon,
-} from "lucide-react";
 import type { Category } from "@/lib/types";
+import type { ProductIcon } from "@/lib/icons";
 
 export interface CategoryMeta {
   id: Category;
   label: string;
+  /** Short label for filter chips and compact nav. */
+  short: string;
   blurb: string;
-  icon: LucideIcon;
+  icon: ProductIcon;
   from: string;
   to: string;
 }
 
 export const categories: CategoryMeta[] = [
   {
-    id: "apparel",
-    label: "Apparel",
-    blurb: "Tees, hoodies and jackets from last season's best drops.",
-    icon: Shirt,
-    from: "#FFB199",
-    to: "#FF6B4A",
+    id: "jackets",
+    label: "Jackets & Outerwear",
+    short: "Jackets",
+    blurb: "Suede, soutache trims and structured blazers.",
+    icon: "jacket",
+    from: "#F3DCC8",
+    to: "#D9B08C",
   },
   {
-    id: "footwear",
-    label: "Footwear",
-    blurb: "Runners, slides and court classics, up to 60% off.",
-    icon: Footprints,
-    from: "#C6F135",
-    to: "#5BD16B",
+    id: "dresses",
+    label: "Dresses",
+    short: "Dresses",
+    blurb: "Linen midis, satin slips and occasion pieces.",
+    icon: "dress",
+    from: "#FBE3EC",
+    to: "#F3BDD0",
+  },
+  {
+    id: "tops",
+    label: "Tops & Blouses",
+    short: "Tops",
+    blurb: "Waistcoats, knits and everyday basics.",
+    icon: "top",
+    from: "#FAF3E8",
+    to: "#EAD9C2",
+  },
+  {
+    id: "denim",
+    label: "Denim & Bottoms",
+    short: "Denim",
+    blurb: "Wide-leg, cargo and pleated silhouettes.",
+    icon: "trousers",
+    from: "#DCE6F0",
+    to: "#AFC3D8",
   },
   {
     id: "accessories",
-    label: "Accessories",
-    blurb: "Caps, shades, totes and watches that finish the look.",
-    icon: Watch,
-    from: "#FFD66B",
-    to: "#FF9F43",
+    label: "Jewellery & Accessories",
+    short: "Jewellery",
+    blurb: "Beaded layers, chunky silver and silk.",
+    icon: "necklace",
+    from: "#F9E7D0",
+    to: "#EFC89A",
   },
   {
-    id: "tech",
-    label: "Audio & Tech",
-    blurb: "Headphones, speakers and gear with full warranties.",
-    icon: Headphones,
-    from: "#9D8CFF",
-    to: "#5B4BFF",
-  },
-  {
-    id: "home",
-    label: "Home",
-    blurb: "Candles, mugs and lighting to set the mood.",
-    icon: Lamp,
-    from: "#8FE3FF",
-    to: "#3FB8E8",
+    id: "shoes-bags",
+    label: "Shoes & Bags",
+    short: "Shoes & Bags",
+    blurb: "Mules, heels and totes to finish the look.",
+    icon: "tote",
+    from: "#F6DDE4",
+    to: "#E7B5C4",
   },
 ];
 
